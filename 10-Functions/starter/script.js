@@ -158,25 +158,39 @@
 // console.log(addVAT(100));
 
 // coding challenge #1
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section!
-  answers: new Array(4).fill(0),
-  registerNewAnswer() {
-    const num = Number(prompt('What is your favourite programming language?\n0: JavaScript\n1: Python\n2: Rust\n3: C++\n(Write option number)'));
-    if (num === 0 || num === 1 || num === 2 || num === 3) this.answers[num]++;
-    else console.log('not a valid number');
-    this.displayResults('string');
-  },
-  displayResults(type = 'array') {
-    if (type === 'array') console.log(this.answers);
-    else if (type === 'string') console.log(`Poll results are ${this.answers}`);
-    else console.log('wrong type');
-  },
-};
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section!
+//   answers: new Array(4).fill(0),
+//   registerNewAnswer() {
+//     const num = Number(prompt('What is your favourite programming language?\n0: JavaScript\n1: Python\n2: Rust\n3: C++\n(Write option number)'));
+//     if (num === 0 || num === 1 || num === 2 || num === 3) this.answers[num]++;
+//     else console.log('not a valid number');
+//     this.displayResults('string');
+//   },
+//   displayResults(type = 'array') {
+//     if (type === 'array') console.log(this.answers);
+//     else if (type === 'string') console.log(`Poll results are ${this.answers}`);
+//     else console.log('wrong type');
+//   },
+// };
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-poll.displayResults.call({answers : [1,5,3,9,6]});
+// poll.displayResults.call({answers : [1,5,3,9,6]});
+
+// const runOnce = function() {
+//   console.log('This will never run again');
+// };
+// runOnce();
+
+(function () {
+    const header = document.querySelector('h1');
+    header.style.color = 'red';
+    function color(color) {
+        header.style.color = 'blue';   
+    }
+    document.querySelector('body').addEventListener('click', color);
+    })();
