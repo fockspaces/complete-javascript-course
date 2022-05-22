@@ -95,6 +95,12 @@ createUserName(accounts);
 
 // console.log(containerMovements.innerHTML);
 
+function calDisplayBalance(movements) {
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${balance} €`;
+}
+calDisplayBalance(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -162,4 +168,15 @@ const deposits = movements.filter(function(mov) {
 
 const withdrawal = movements.filter(mov => mov < 0);
 // console.log(withdrawal);
+
+// accumulator -> snowball
+const balance = movements.reduce(function(acc, cur, i) {
+  return acc + cur;
+}, 0);
+// console.log(balance);
+
+// Maximum Value
+console.log(movements);
+const max_mov = movements.reduce((acc, cur) => acc = Math.max(acc, cur), movements[0]);
+console.log(max_mov); 
 
