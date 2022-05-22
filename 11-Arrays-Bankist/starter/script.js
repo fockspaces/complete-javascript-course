@@ -160,7 +160,7 @@ const movementsDecriptions = movements.map(
 );
 // console.log(movementsDecriptions);
 
-const deposits = movements.filter(function(mov) {
+const deposits = movements.filter(function (mov) {
   return mov > 0;
 });
 // console.log(movements);
@@ -170,13 +170,26 @@ const withdrawal = movements.filter(mov => mov < 0);
 // console.log(withdrawal);
 
 // accumulator -> snowball
-const balance = movements.reduce(function(acc, cur, i) {
+const balance = movements.reduce(function (acc, cur, i) {
   return acc + cur;
 }, 0);
 // console.log(balance);
 
 // Maximum Value
-console.log(movements);
-const max_mov = movements.reduce((acc, cur) => acc = Math.max(acc, cur), movements[0]);
-console.log(max_mov); 
+// console.log(movements);
+const max_mov = movements.reduce(
+  (acc, cur) => (acc = Math.max(acc, cur)),
+  movements[0]
+);
+// console.log(max_mov);
 
+// coding challenge #2
+const dogs = [5, 2, 4, 1, 15, 8, 3];
+function calcAverageHumanAge(ages) {
+  let humanAge = ages.map(age => age = (age <= 2 ? 2 * age : 16 + age * 4));
+  humanAge = humanAge.filter(age => age > 18);
+  console.log(humanAge);
+  let totalAge = humanAge.reduce((acc, age) => acc + age);
+  return totalAge / humanAge.length;  
+}
+calcAverageHumanAge(dogs);
