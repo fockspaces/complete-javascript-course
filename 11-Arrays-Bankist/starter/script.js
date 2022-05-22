@@ -77,6 +77,22 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+function createUserName(accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+}
+
+// const user = 'Steven Thomas Williams';
+// const username = createUserName(user);
+// console.log(username);
+createUserName(accounts);
+console.log(accounts);
+
 // console.log(containerMovements.innerHTML);
 
 /////////////////////////////////////////////////
@@ -136,6 +152,4 @@ const movementsDecriptions = movements.map(
       mov
     )}`
 );
-console.log(movementsDecriptions);
-
-
+// console.log(movementsDecriptions);
