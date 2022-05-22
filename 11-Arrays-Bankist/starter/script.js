@@ -91,7 +91,7 @@ function createUserName(accs) {
 // const username = createUserName(user);
 // console.log(username);
 createUserName(accounts);
-console.log(accounts);
+// console.log(accounts);
 
 // console.log(containerMovements.innerHTML);
 
@@ -142,8 +142,8 @@ const movementsUSD = movements.map(mov => (mov * eurToUsd).toFixed(2));
 // console.log(movements);
 // console.log(movementsUSD);
 
-const movements_USD = [];
-for (const mov of movements) movements_USD.push(mov * eurToUsd);
+// const movements_USD = [];
+// for (const mov of movements) movements_USD.push(mov * eurToUsd);
 // console.log(movements_USD);
 
 const movementsDecriptions = movements.map(
@@ -153,3 +153,13 @@ const movementsDecriptions = movements.map(
     )}`
 );
 // console.log(movementsDecriptions);
+
+const deposits = movements.filter(function(mov) {
+  return mov > 0;
+});
+// console.log(movements);
+// console.log(deposits);
+
+const withdrawal = movements.filter(mov => mov < 0);
+// console.log(withdrawal);
+
