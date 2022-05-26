@@ -280,20 +280,11 @@ btnLoan.addEventListener('click', function (e) {
     currentAccount.movements.push(amount);
     // Update UI
     updateUI(currentAccount);
-  } else {alert("too much!")}
+  } else {
+    alert('too much!');
+  }
   inputLoanAmount.value = '';
 });
-
-
-
-
-
-
-
-
-
-
-
 
 //////////////////////// coding chllanges #1
 // function checkDogs(dogsJulia, dogsKate) {
