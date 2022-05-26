@@ -198,6 +198,9 @@ const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 // console.log(account);
 
 function updateUI(acc) {
+  // Display UI and welcome message
+  labelWelcome.textContent = `Welcome back, ${acc.owner.split(' ')[0]}`;
+  containerApp.style.opacity = 100;
   // Display movements
   displayMovements(acc.movements);
   // Display balance
@@ -216,20 +219,15 @@ btnLogin.addEventListener('click', function (e) {
     acc => acc.username === inputLoginUsername.value
   );
   currentAccount = currentAccount ? currentAccount : prevAccount;
-  if (currentAccount?.pin === Number(inputLoginPin.value)) console.log('LOGIN');
-  else alert('incorrect username or password');
-  // Display UI and welcome message
-  labelWelcome.textContent = `Welcome back, ${
-    currentAccount.owner.split(' ')[0]
-  }`;
-  containerApp.style.opacity = 100;
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log('LOGIN');
+    //update UI
+    updateUI(currentAccount);
+  } else alert('incorrect username or password');
 
   //clear input fields
   inputLoginUsername.value = inputLoginPin.value = '';
   inputLoginPin.blur();
-
-  //update UI
-  updateUI(currentAccount);
 });
 
 btnTransfer.addEventListener('click', function (e) {
@@ -260,10 +258,18 @@ btnClose.addEventListener('click', function (e) {
     inputCloseUsername.value === currentAccount.username &&
     Number(inputClosePin.value) === currentAccount.pin
   ) {
-    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
     // console.log(index);
+    // delete account
     accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
   }
+  inputCloseUsername.value = inputClosePin.value = '';
+  currentAccount = undefined;
 });
 
 //////////////////////// coding chllanges #1
