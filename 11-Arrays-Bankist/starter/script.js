@@ -61,10 +61,11 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
 
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `<div class="movements__row">
@@ -185,17 +186,7 @@ const totalUSD = movements
     // console.log(arr);
     return mov * eurToUsd;
   })
-  // .map(mov => mov * eurToUsd)
   .reduce((acc, mov) => acc + mov, 0);
-// console.log(totalUSD);
-
-// const firstWithdrawal = movements.find(mov => mov < 0);
-// console.log(movements);
-// console.log(firstWithdrawal);
-// console.log(accounts);
-
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-// console.log(account);
 
 function updateUI(acc) {
   // Display UI and welcome message
@@ -284,6 +275,13 @@ btnLoan.addEventListener('click', function (e) {
     alert('too much!');
   }
   inputLoanAmount.value = '';
+});
+
+let sort = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  sort = !sort;
+  displayMovements(currentAccount.movements, sort);
 });
 
 //////////////////////// coding chllanges #1
