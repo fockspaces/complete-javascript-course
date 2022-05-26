@@ -206,8 +206,6 @@ function updateUI(acc) {
   calDisplaySummary(acc);
 }
 
-
-
 // Login
 let currentAccount;
 
@@ -240,7 +238,7 @@ btnTransfer.addEventListener('click', function (e) {
   const receiverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
-  inputTransferAmount.value= inputTransferTo.value = '';
+  inputTransferAmount.value = inputTransferTo.value = '';
   if (
     amount > 0 &&
     receiverAcc &&
@@ -254,6 +252,18 @@ btnTransfer.addEventListener('click', function (e) {
 
   //update UI
   updateUI(currentAccount);
+});
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    // console.log(index);
+    accounts.splice(index, 1);
+  }
 });
 
 //////////////////////// coding chllanges #1
