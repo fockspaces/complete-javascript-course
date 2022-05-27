@@ -341,3 +341,45 @@ labelBalance.addEventListener('click', function () {
 //   return age
 // }
 // console.log(calcAverageHumanAge2(dogs));
+
+//////////////////////// coding chllanges #4
+// const dogs = [
+//   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+//   { weight: 8, curFood: 200, owners: ['Matilda'] },
+//   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+//   { weight: 32, curFood: 340, owners: ['Michael'] },
+// ];
+// //1
+// dogs.forEach(dog => (dog.stdFood = dog.weight ** 0.75 * 28));
+
+// //2
+// // console.log(dogs);
+// // const Sarah_dog = dogs.find(el => el.owners.includes('Sarah'));
+// const compare = (food, std) => food >= std * 0.9 && food <= std * 1.1;
+
+// //3
+// const ownersEatTooMuch = dogs
+//   .filter(dog => dog.curFood > dog.stdFood)
+//   .flatMap(dog => dog.owners);
+// const ownersEatTooLittle = dogs
+//   .filter(dog => dog.curFood < dog.stdFood)
+//   .flatMap(dog => dog.owners);
+
+// //4
+// const MuchString = ownersEatTooMuch.join(' and ') + "'s dogs eat too much!";
+// const littleString =
+//   ownersEatTooLittle.join(' and ') + "'s dogs eat too little!";
+// console.log(MuchString);
+// console.log(littleString);
+
+// //5
+// console.log(dogs.some(dog => dog.curFood === dog.stdFood));
+// //6
+// console.log(dogs.some(dog => compare(dog.curFood, dog.stdFood)));
+// //7
+// const Okay = dogs.filter(dog => compare(dog.curFood, dog.stdFood));
+// console.log(Okay);
+
+// //8
+// const dogCopy = dogs.slice().sort((a, b) => a.stdFood - b.stdFood);
+
