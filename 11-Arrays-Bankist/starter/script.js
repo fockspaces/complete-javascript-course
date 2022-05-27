@@ -284,6 +284,17 @@ btnSort.addEventListener('click', function (e) {
   displayMovements(currentAccount.movements, sort);
 });
 
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+
+  // const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+  // console.log(movementsUI2);
+});
+
 //////////////////////// coding chllanges #1
 // function checkDogs(dogsJulia, dogsKate) {
 //   const dogsJuliaCorrected = dogsJulia.slice();
