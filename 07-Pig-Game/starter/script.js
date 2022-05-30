@@ -81,5 +81,4 @@ function hold() {
   } else switchPlayer();
 }
 btnHold.addEventListener('click', hold);
-
 btnNew.addEventListener('click', init);

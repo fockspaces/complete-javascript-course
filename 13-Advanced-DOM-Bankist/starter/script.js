@@ -90,7 +90,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 
 // Tabbed component
-// Tab switch -- Event delegation
+//// Tab switch -- Event delegation
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
   // Guard clause
@@ -123,3 +123,14 @@ function habdover(e, opacity) {
 // set opacity when mouse move in and out
 nav.addEventListener('mouseover', e => habdover(e, 0.5));
 nav.addEventListener('mouseout', e => habdover(e, 1));
+
+//// sticky navigation
+const initialCoords = section1.getBoundingClientRect();
+window.addEventListener('scroll', function () {
+  console.log(window.scrollY);
+  if (window.scrollY > initialCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
