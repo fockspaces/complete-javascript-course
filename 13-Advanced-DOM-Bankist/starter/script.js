@@ -138,3 +138,12 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${navHeight}px`,
 });
 headerObserver.observe(header);
+
+//// Reveal Sections
+const allSection = document.querySelectorAll('.section');
+function revealSection(entries, observer) {}
+
+const sectionObserver = new IntersectionObserver(revealSection, {});
+allSection.forEach(function (section) {
+  sectionObserver.observe(section);
+});
