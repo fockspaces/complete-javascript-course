@@ -134,16 +134,22 @@ const stickyNav = function (entries) {
 };
 const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
-  threshold: 0,
+  threshold: 0.15,
   rootMargin: `-${navHeight}px`,
 });
 headerObserver.observe(header);
 
 //// Reveal Sections
 const allSection = document.querySelectorAll('.section');
-function revealSection(entries, observer) {}
+function revealSection(entries, observer) {
+  const [entry] = entries;
+  if(!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+}
 
 const sectionObserver = new IntersectionObserver(revealSection, {});
 allSection.forEach(function (section) {
   sectionObserver.observe(section);
+  section.classList.add('section--hidden');
 });
