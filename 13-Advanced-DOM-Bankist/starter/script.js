@@ -161,7 +161,6 @@ allSection.forEach(function (section) {
 const imgTarget = document.querySelectorAll('img[data-src]');
 function loadImg(entries, observer) {
   const [entry] = entries;
-  console.log(entry);
   if (!entry.isIntersecting) return;
 
   // Replace src with data-src
@@ -177,3 +176,34 @@ const imgObserver = new IntersectionObserver(loadImg, {
   rootMargin: '200px',
 });
 imgTarget.forEach(img => imgObserver.observe(img));
+
+//// Silder
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+const slider = document.querySelector('.slider');
+
+let curSlide = 0;
+const maxSlide = slides.length -1;
+
+// slider.style.transform = 'scale(0.2) translateX(-800x)';
+// slider.style.overflow = 'visible';
+slides.forEach((s, i) => (s.style.transform = `translateX(${i * 100}%)`));
+console.log(maxSlide);
+// Next slide
+btnRight.addEventListener('click', function () {
+  if (curSlide === maxSlide) curSlide = 0;
+  else curSlide++;
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${(i - curSlide) * 100}%)`)
+  );
+});
+
+// Prev slide
+btnLeft.addEventListener('click', function () {
+  if (curSlide === 0) curSlide = maxSlide;
+  else curSlide--;
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${(i - curSlide) * 100}%)`)
+  );
+});
