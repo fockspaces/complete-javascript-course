@@ -8,6 +8,8 @@ const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 const nav = document.querySelector('.nav');
 const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+
 const message = document.createElement('div');
 const h1 = document.querySelector('h1');
 
@@ -44,7 +46,7 @@ document.addEventListener('keydown', function (e) {
 message.classList.add('cookie-message');
 message.textContent = 'We use cookie for improved.';
 message.innerHTML =
-  'We use cookie for improved.<button class="btn btn--close-cookie">Got it!</button>';
+  '訂閱我們以獲取最新動態.<button class="btn btn--close-cookie">好!</button>';
 // show element
 header.append(message);
 // delete element
@@ -124,13 +126,15 @@ function habdover(e, opacity) {
 nav.addEventListener('mouseover', e => habdover(e, 0.5));
 nav.addEventListener('mouseout', e => habdover(e, 1));
 
-//// sticky navigation
-const initialCoords = section1.getBoundingClientRect();
-window.addEventListener('scroll', function () {
-  console.log(window.scrollY);
-  if (window.scrollY > initialCoords.top) {
-    nav.classList.add('sticky');
-  } else {
-    nav.classList.remove('sticky');
-  }
+//// sticky navigation API
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
 });
+headerObserver.observe(header);
